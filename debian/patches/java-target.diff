@@ -1,0 +1,13 @@
+diff --git a/java/Makefile b/java/Makefile
+index f9651a7..40a62d5 100644
+--- a/java/Makefile
++++ b/java/Makefile
+@@ -2,7 +2,7 @@ all:
+ 	mkdir -p org/numbertext/data
+ 	cp ../data/*.sor org/numbertext/data
+ 	cp -r src/main/org/numbertext/*.java org/numbertext
+-	CLASSPATH=. javac -encoding utf8 org/numbertext/Numbertext.java
++	CLASSPATH=. javac -encoding utf8 -source 1.8 -target 1.8 org/numbertext/Numbertext.java
+ 	jar cfm numbertext.jar Manifest.txt org
+ 	java -jar numbertext.jar
+ 

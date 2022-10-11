@@ -1,0 +1,41 @@
+diff --git a/pythonpath/Makefile b/pythonpath/Makefile
+index 3fab145..c80f0a0 100644
+--- a/pythonpath/Makefile
++++ b/pythonpath/Makefile
+@@ -12,10 +12,10 @@ org/Numbertext/places.py: ../src/places.py
+ 
+ #org/Numbertext/%.py: ../data/%.sor $(BIN)/Convert.py
+ numbertext_%.py: ../data/%.sor $(BIN)/Convert.py
+-	python $(BIN)/Convert.py $< >$@
++	python3 $(BIN)/Convert.py $< >$@
+ 
+ org/Numbertext/locales.py: $(addprefix numbertext_, $(addsuffix .py, $(basename $(notdir $(wildcard ../data/*.sor)))))
+-	python $(BIN)/locales.py $(basename $(notdir $(wildcard ../data/*.sor))) $(shell cat ../data/*.sor | grep -Eo '\[:.....:]' | tr '-' '_' | tr -d '[]:' | sort | uniq) >org/Numbertext/locales.py
++	python3 $(BIN)/locales.py $(basename $(notdir $(wildcard ../data/*.sor))) $(shell cat ../data/*.sor | grep -Eo '\[:.....:]' | tr '-' '_' | tr -d '[]:' | sort | uniq) >org/Numbertext/locales.py
+ 
+ clean:
+ 	rm -f $(addprefix numbertext_, $(addsuffix .py, $(basename $(notdir $(wildcard ../data/*.sor)))))
+diff --git a/test/test.sh b/test/test.sh
+index 91efcd5..eeac0ba 100755
+--- a/test/test.sh
++++ b/test/test.sh
+@@ -8,5 +8,5 @@ if [ ! -d $TEMPDIR ]; then
+   mkdir $TEMPDIR
+ fi
+ 
+-PYTHONPATH=../src/ python test.py $TESTDIR/$1 $TESTDIR/$2 $TEMPDIR/test.out$$
++PYTHONPATH=../src/ python3 test.py $TESTDIR/$1 $TESTDIR/$2 $TEMPDIR/test.out$$
+ diff $TEMPDIR/test.out$$ $TESTDIR/$3 || exit 1
+diff --git a/test/test0.test b/test/test0.test
+index 9a6a4a1..b2e1570 100755
+--- a/test/test0.test
++++ b/test/test0.test
+@@ -4,7 +4,7 @@ for i in ../data/[a-zHR]*.sor # skip Suzhou.sor (multiline regex support needs f
+ do
+     echo === $i ===
+     # check first 1000 numbers in all languages, checking also the conditional lines
+-    PYTHONPATH=../src python test.py $i <(seq 0 2000)  /dev/stdout $(grep -Eo '\[:.....:]' $i | tr -d '[]:' | sort | uniq) |
++    PYTHONPATH=../src python3 test.py $i <(seq 0 2000)  /dev/stdout $(grep -Eo '\[:.....:]' $i | tr -d '[]:' | sort | uniq) |
+     awk -v fil="$i" '
+         /Language:/{delete a; lang=$2}
+         /^$/{print "Missing output: " fil " (input number: " NR%2000", language: " lang ")";next}

@@ -1,0 +1,7 @@
+reg.uno.py usr/lib/libreoffice/share/extensions/numbertext
+META-INF usr/lib/libreoffice/share/extensions/numbertext
+pythonpath usr/lib/libreoffice/share/extensions/numbertext
+rdb usr/lib/libreoffice/share/extensions/numbertext
+idl usr/lib/libreoffice/share/extensions/numbertext
+pkg-desc usr/lib/libreoffice/share/extensions/numbertext
+CalcAddIn.xcu usr/lib/libreoffice/share/extensions/numbertext

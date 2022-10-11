@@ -1,0 +1,88 @@
+libnumbertext (1.0.7-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints.
+    + libnumbertext-java: Add Multi-Arch: foreign.
+
+  [ Rene Engelhard ]
+  * New upstream version 1.0.7
+
+ -- Rene Engelhard <rene@debian.org>  Fri, 05 Feb 2021 09:48:49 +0100
+
+libnumbertext (1.0.6-1) unstable; urgency=medium
+
+  * New upstream version 1.0.6
+
+  * add maven-repo-helper to Build-Depends: and use mh_* for new pom
+
+ -- Rene Engelhard <rene@debian.org>  Wed, 03 Jun 2020 19:20:53 +0200
+
+libnumbertext (1.0.5-3) unstable; urgency=medium
+
+  * also patch test for python3
+
+ -- Rene Engelhard <rene@debian.org>  Tue, 03 Sep 2019 07:18:24 +0200
+
+libnumbertext (1.0.5-2) unstable; urgency=medium
+
+  * build using python3 (closes: #936896) 
+
+ -- Rene Engelhard <rene@debian.org>  Mon, 02 Sep 2019 18:52:22 +0000
+
+libnumbertext (1.0.5-1) unstable; urgency=medium
+
+  * New upstream version 1.0.5
+
+  * add a cd /tmp to the tests to be sure we don't run from the build dir
+    (where it would pick up ./data)
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 13 Oct 2018 14:42:38 +0200
+
+libnumbertext (1.0-3) unstable; urgency=medium
+
+  * fix spellout.cxx to use /usr/share/libnumbertext, not try
+    /usr/share/numbertext (closes: #908237)
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 08 Sep 2018 11:22:31 +0000
+
+libnumbertext (1.0-2) unstable; urgency=medium
+
+  * upload to unstable
+
+ -- Rene Engelhard <rene@debian.org>  Tue, 03 Jul 2018 18:42:27 +0000
+
+libnumbertext (1.0-1) experimental; urgency=medium
+
+  * New upstream version 1.0
+
+ -- Rene Engelhard <rene@debian.org>  Tue, 03 Jul 2018 07:37:39 +0200
+
+libnumbertext (1.0~beta3-1) experimental; urgency=medium
+
+  * New upstream version 1.0~beta3
+
+ -- Rene Engelhard <rene@debian.org>  Tue, 29 May 2018 00:11:11 +0200
+
+libnumbertext (1.0~beta2-3) experimental; urgency=medium
+
+  * debian/patches/allow-CXXFLAGS-override.diff: don't overwrite CXXFLAGS
+    of the environment. (e.g. -g -O2)
+  * debian/tests/control: more tests (libnumbertext-java and 99 fr vs. fr_BE).
+    echo the failure message to stderr
+  * debian/patches/java-encoding.diff: add -encoding utf8
+ 
+ -- Rene Engelhard <rene@debian.org>  Sat, 12 May 2018 22:39:29 +0000
+
+libnumbertext (1.0~beta2-2) experimental; urgency=medium
+
+  * debian/patches/no-config.h-include.diff: make Soros.hxx not #include
+    "config.h" since that doesn't exist and consumers of Numbertext.hxx
+    would fail
+
+ -- Rene Engelhard <rene@debian.org>  Fri, 04 May 2018 10:37:05 +0200
+
+libnumbertext (1.0~beta2-1) experimental; urgency=medium
+
+  * Initial release
+
+ -- Rene Engelhard <rene@debian.org>  Fri, 04 May 2018 07:51:33 +0000

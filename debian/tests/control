@@ -1,0 +1,28 @@
+Test-Command:  cd /tmp; if [ "`/usr/lib/libnumbertext/spellout -l en 123`" != "one hundred twenty-three" ]; then echo "Invalid spellout of 123 for en." >&2; exit 1; else exit 0; fi
+Depends: libnumbertext-tools
+
+Test-Command: cd /tmp; if [ "`/usr/lib/libnumbertext/spellout -l de 123`" != "einhundertdreiundzwanzig" ]; then echo "Invalid spellout of 123 for de." >&2; exit 1; else exit 0; fi
+Depends: libnumbertext-tools
+
+# taken from upstream make check
+
+Test-Command: cd /tmp; if [ "`java -jar /usr/share/java/numbertext.jar -l en 99`" != "ninety-nine" ]; then echo "Invalid 99."; >&2 exit 1; else exit 0; fi
+Depends: default-jre, libnumbertext-java
+
+Test-Command: cd /tmp; if [ "`java -jar /usr/share/java/numbertext.jar -l en 101`" != "one hundred one" ]; then echo "Invalid 101 for en." >&2; exit 1; else exit 0; fi
+Depends: default-jre, libnumbertext-java
+
+Test-Command: cd /tmp; if [ "`java -jar /usr/share/java/numbertext.jar -l en-GB 101`" != "one hundred and one" ]; then echo "Invalid 101 for en-GB." >&2; exit 1; else exit 0; fi
+Depends: default-jre, libnumbertext-java
+
+# let's test this, too
+
+Test-Command: cd /tmp; if [ "`/usr/lib/libnumbertext/spellout -l en 99`" != "ninety-nine" ]; then echo "Invalid spellout of 99 for en." >&2; exit 1; else exit 0; fi
+Depends: libnumbertext-tools
+
+Test-Command: cd /tmp; if [ "`/usr/lib/libnumbertext/spellout -l fr 99`" != "quatre-vingt-dix-neuf" ]; then echo "Invalid 99 for fr."; >&2 exit 1; else exit 0; fi
+Depends: libnumbertext-tools
+
+Test-Command: cd /tmp; if [ "`/usr/lib/libnumbertext/spellout -l fr-BE 99`" != "nonante-neuf" ]; then echo "Invalid 99 for fr-BE."; >&2 exit 1; else exit 0; fi
+Depends: libnumbertext-tools
+

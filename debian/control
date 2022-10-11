@@ -1,0 +1,88 @@
+Source: libnumbertext
+Priority: optional
+Maintainer: Debian LibreOffice Maintainers <debian-openoffice@lists.debian.org>
+Uploaders: Rene Engelhard <rene@debian.org>
+Build-Depends: debhelper (>= 10), default-jdk, python3, zip, maven-repo-helper
+Standards-Version: 4.1.2
+Section: libs
+Homepage: https://numbertext.github.io/
+Vcs-Git: https://salsa.debian.org/libreoffice-team/libnumbertext.git
+Vcs-Browser: https://salsa.debian.org/libreoffice-team/libnumbertext
+
+Package: libnumbertext-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libnumbertext-1.0-0 (= ${binary:Version}), ${misc:Depends}
+Description: Number to number name and money text conversion library -- development
+ libnumbertext provides easy to configure, lightweight open source C++, Java,
+ JavaScript, Python libraries and a LibreOffice Spreadsheet extension for
+ number to number name conversion, including cardinal and ordinal numbers,
+ ordinal indicators and money amounts with currencies in more than 30 languages
+ and numeral systems.
+ .
+ This package contains the needed files to develop/build against
+ libnumbertext.
+
+Package: libnumbertext-1.0-0
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, libnumbertext-data
+Description: Number to number name and money text conversion library
+ libnumbertext provides easy to configure, lightweight open source C++, Java,
+ JavaScript, Python libraries and a LibreOffice Spreadsheet extension for
+ number to number name conversion, including cardinal and ordinal numbers,
+ ordinal indicators and money amounts with currencies in more than 30 languages
+ and numeral systems.
+
+Package: libnumbertext-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Description: Number to number name and money text conversion library -- data files
+ libnumbertext provides easy to configure, lightweight open source C++, Java,
+ JavaScript, Python libraries and a LibreOffice Spreadsheet extension for
+ number to number name conversion, including cardinal and ordinal numbers,
+ ordinal indicators and money amounts with currencies in more than 30 languages
+ and numeral systems.
+ .
+ This package contains the data files.
+
+Package: libnumbertext-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Number to number name and money text conversion library -- speller utility
+ libnumbertext provides easy to configure, lightweight open source C++, Java,
+ JavaScript, Python libraries and a LibreOffice Spreadsheet extension for
+ number to number name conversion, including cardinal and ordinal numbers,
+ ordinal indicators and money amounts with currencies in more than 30 languages
+ and numeral systems.
+ .
+ This package contains the "spellout" tool which uses libnumbertext to spell
+ out numbers.
+
+Package: libnumbertext-java
+Architecture: all
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Description: Number to number name and money text conversion library for Java
+ libnumbertext provides easy to configure, lightweight open source C++, Java,
+ JavaScript, Python libraries and a LibreOffice Spreadsheet extension for
+ number to number name conversion, including cardinal and ordinal numbers,
+ ordinal indicators and money amounts with currencies in more than 30 languages
+ and numeral systems.
+ .
+ This package contains the numbertext Java library.
+
+Package: libreoffice-numbertext
+Architecture: all
+Depends: libreoffice-calc, python3-uno, ${misc:Depends}
+Description: number to number name and currency name conversion LO Calc Add-In
+ NUMBERTEXT and MONEYTEXT are spreadsheet functions for number to number name
+ and currency name conversion proposed for OpenFormula standard. MONEYTEXT is
+ functionally top-compliant with the ECMA/ISO standard BAHTTEXT function, and
+ supports more than 30 languages.
+ .
+ This Add-In provides those functions to LibreOffice Calc.
+ .
+ https://extensions.libreoffice.org/extensions/numbertext-1

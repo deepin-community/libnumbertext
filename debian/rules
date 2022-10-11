@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- --disable-werror
+
+override_dh_auto_build:
+	dh_auto_build
+	cd pythonpath && \
+		$(MAKE)
+	cd java && \
+		mkdir -p org/numbertext/data && \
+		$(MAKE)
+	# remove unneeded source files...
+	zip -d java/numbertext.jar org/numbertext/Numbertext.java
+	zip -d java/numbertext.jar org/numbertext/Soros.java
+	zip -d java/numbertext.jar org/numbertext/MenuState.java
+
+override_dh_auto_test:
+	cd test && $(MAKE)
+	cd java && $(MAKE) check
+
+override_dh_install:
+	cat description.xml.in | bin/shellhtml >description.xml
+	dh_install
+	rm -f debian/libreoffice-numbertext/usr/lib/libreoffice/share/extensions/numbertext/idl/buildrdb.sh
+	mh_installpom -plibnumbertext-java ./java/pom.xml
+	mh_installjar -plibnumbertext-java -l ./java/pom.xml java/numbertext.jar
+
+override_dh_auto_clean:
+	rm -rf java/numbertext.jar java/org/numbertext/*.class java/org/numbertext/data
+	# the build copies those here... :(
+	rm -f java/org/numbertext/MenuState.java java/org/numbertext/Numbertext.java java/org/numbertext/Soros.java
+	rm -rf src/__pycache__/
+	rm -f pythonpath/numbertext_*.py pythonpath/org/Numbertext/Soros.py pythonpath/org/Numbertext/locales.py pythonpath/org/Numbertext/places.py
+	rm -f description.xml
+	rm -rf test/testSubDir
+	mh_clean
+	dh_auto_clean
+
