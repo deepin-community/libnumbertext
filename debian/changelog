@@ -1,3 +1,21 @@
+libnumbertext (1.0.10-1) unstable; urgency=medium
+
+  * New upstream version 1.0.10
+
+ -- Rene Engelhard <rene@debian.org>  Wed, 06 Apr 2022 16:55:04 +0200
+
+libnumbertext (1.0.9-1) unstable; urgency=medium
+
+  * New upstream version 1.0.9
+
+ -- Rene Engelhard <rene@debian.org>  Fri, 01 Apr 2022 13:59:19 +0200
+
+libnumbertext (1.0.8-1) unstable; urgency=medium
+
+  * New upstream version 1.0.8
+
+ -- Rene Engelhard <rene@debian.org>  Tue, 04 Jan 2022 19:47:26 +0100
+
 libnumbertext (1.0.7-1) unstable; urgency=medium
 
   [ Debian Janitor ]
