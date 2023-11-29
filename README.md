@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/Numbertext/libnumbertext.png?branch=master)](https://travis-ci.org/Numbertext/libnumbertext)
 
 ```
-Language-neutral NUMBERTEXT and MONEYTEXT functions for LibreOffice Calc
+Base of default language-neutral NatNum12 number format code modifier of LibreOffice, and optional NUMBERTEXT and MONEYTEXT add-on functions for LibreOffice Calc
 
-version 1.0.10 (2022-04-02)
+version 1.0.11 (2022-11-13)
 
 Numbertext LibreOffice extension,
 Soros programming language specification (draft) and IDE*,
@@ -66,6 +66,7 @@ en-NZ	English (one hundred and one)
 eo	Esperanto
 es	Spanish
 et	Estonian
+fa	Persian (Farsi)
 fi	Finnish
 fr	French
 fr-BE	Belgian French
@@ -89,6 +90,7 @@ lv	Latvian
 mr	Marathi
 ms	Malaysian
 mt	Maltese
+mul	note symbols, e.g. \*, †, ‡, ... for multiple languages
 nb	Norwegian Bokmål
 nl	Dutch
 nn	Norwegian Nynorsk
@@ -122,6 +124,7 @@ Suzhou		Chinese Suzhou numerals
 autoreconf -i
 ./configure
 make
+make check
 
 # test it
 

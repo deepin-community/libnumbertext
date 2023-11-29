@@ -1,3 +1,22 @@
+libnumbertext (1.0.11-3) unstable; urgency=medium
+
+  * remove no-op mh_clean call 
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 18 Nov 2023 16:48:08 +0100
+
+libnumbertext (1.0.11-2) unstable; urgency=medium
+
+  * split build-arch and build-indep, don't run the Java tests if not built
+  * move openjdk and mpaven-repo-helper to Build-Depends-Indep 
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 18 Nov 2023 13:43:06 +0000
+
+libnumbertext (1.0.11-1) unstable; urgency=medium
+
+  * New upstream version 1.0.11
+
+ -- Rene Engelhard <rene@debian.org>  Mon, 14 Nov 2022 19:05:34 +0100
+
 libnumbertext (1.0.10-1) unstable; urgency=medium
 
   * New upstream version 1.0.10

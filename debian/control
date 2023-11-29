@@ -2,7 +2,8 @@ Source: libnumbertext
 Priority: optional
 Maintainer: Debian LibreOffice Maintainers <debian-openoffice@lists.debian.org>
 Uploaders: Rene Engelhard <rene@debian.org>
-Build-Depends: debhelper (>= 10), default-jdk, python3, zip, maven-repo-helper
+Build-Depends: debhelper (>= 10), python3, zip
+Build-Depends-Indep: default-jdk, maven-repo-helper
 Standards-Version: 4.1.2
 Section: libs
 Homepage: https://numbertext.github.io/
