@@ -29,7 +29,7 @@ const std::wstring Soros::pipe = L"\uE003";
 const wregex Soros::func ( Soros::translate (
     L"(?:\\|?(?:\\$\\()+)?"           // optional nested calls
     "(\\|?\\$\\(([^\\(\\)]*)\\)\\|?)" // inner call (2 subgroups)
-    "(?:\\)+\\|?)?",                  // optional nested calls
+    "(?:\uE00A?\\)+\\|?)?",           // optional nested calls
     Soros::m2.substr(0, 4), Soros::c, L"\\"));  // \$, \(, \), \| -> \uE000..\uE003
 
 void Soros::replace(std::wstring& s, const std::wstring& search,
@@ -98,8 +98,8 @@ Soros::Soros(std::wstring program, std::wstring filtered_lang):
             s = regex_replace(s, quoteEnd, L"");
             s = translate(s, c.substr(1), m.substr(1), L"");
             replace(s, slash, L"\\\\"); // -> \\, ", ;, #
-            begins.push_back(s[0] == L'^');
-            ends.push_back(s[s.length()-1] == L'$');
+            begins.push_back(!s.empty() && s[0] == L'^');
+            ends.push_back(!s.empty() && s[s.length()-1] == L'$');
             s = L"^" + regex_replace(s, wregex(L"^\\^"), L"");
             s = regex_replace(s, wregex(L"\\$$"), L"") + L"$";
             try
@@ -122,7 +122,6 @@ Soros::Soros(std::wstring program, std::wstring filtered_lang):
                             L"$$(" SEP SEP L"|$$$1" SEP); // add "|" in terminating position
             s2 = regex_replace(s2, wregex(L"\\[([^$\\[\\\\]*)[$](\\d\\d?|\\([^\\)]+\\))"),
                             L"$$(" SEP L"$1" SEP L"$$$2" SEP);
-            s2 = regex_replace(s2, wregex(SEP L"\\]$"), L"|" SEP L")"); // add "|" in terminating position
             s2 = translate(s2, L"]", L")", L"");
             s2 = regex_replace(s2, wregex(L"([$]\\d|\\))\\|[$]"), L"$1||$$"); // $()|$() -> $()||$()
             s2 = translate(s2, c, m, L"");   // \uE000..\uE003-> \, ", ;, #
